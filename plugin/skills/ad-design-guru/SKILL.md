@@ -8,7 +8,7 @@ description: >
   production task. Also triggers for brand file setup, ad review, or format
   adaptation. This skill should be used for ANY advertising design work
   happening in Figma through figma-remote-mcp.
-version: 1.5.0
+version: 1.6.0
 ---
 
 # Ad Design Guru - Conceptual HQ
@@ -72,99 +72,82 @@ ONLY after ALL answers, begin designing.
 
 ---
 
-## Rule 1: MARGINS AND CONTENT PLACEMENT
+## Rule 1: HOW TO BUILD EACH AD FRAME
 
-### THE PRINCIPLE:
-Each format has a CONTENT ZONE. This is the ONLY area where you place
-design elements. The background image fills the entire frame. Everything
-else (logo, heading, body, CTA) goes INSIDE the content zone.
+This is the EXACT construction sequence. Follow it step by step.
 
-### CRITICAL INSTRUCTIONS FOR FIGMA:
-- Do NOT create an auto-layout frame for content
-- Do NOT create a wrapper frame or group to hold elements
-- Place each element INDIVIDUALLY as a direct child of the main frame
-- Position each element using absolute X and Y coordinates
-- Every element must have its position within the content zone bounds
+### STRUCTURE OF EVERY AD:
 
-### META FORMATS:
+Every ad has exactly TWO nested frames:
+
+OUTER FRAME = the ad artboard at full format size
+  INNER FRAME = the content container at content zone size
+    All elements go inside the inner frame
+
+The OUTER FRAME holds the background image edge to edge.
+The INNER FRAME is positioned at exact coordinates inside the outer frame.
+ALL design elements (logo, heading, body, CTA) go INSIDE the inner frame.
+
+### CONSTRUCTION STEPS:
+
+STEP 1: Create the OUTER FRAME
+- Set dimensions to the exact format size
+- Name it: BrandName-MM.DD-Format-Variation
+- Add the background image, set to fill the entire frame
+
+STEP 2: Add a dark overlay inside the outer frame (if needed)
+- Rectangle, same size as outer frame, x=0 y=0
+- Fill: black, opacity 40-60%
+- Name: DarkOverlay
+
+STEP 3: Create the INNER FRAME inside the outer frame
+- This is the content container
+- Set dimensions and position EXACTLY as listed below
+- Name: ContentZone
+- No fill, no stroke
+- Clip content: ON
+
+STEP 4: Place all design elements INSIDE the inner frame
+- Logo, Heading, BodyCopy, CTA go inside ContentZone
+- Their x,y positions are RELATIVE to the inner frame (starting at 0,0)
+- This automatically keeps them within the content zone
+
+### EXACT INNER FRAME SPECS PER FORMAT:
 
 1:1 SQUARE
-Frame: 1440 x 1440
-Content zone: 1150 x 1150
-Content starts at: x=145, y=145
-Content ends at: x=1295, y=1295
-EVERY element must be: x >= 145, y >= 145, right edge <= 1295, bottom <= 1295
+Outer frame: 1440 x 1440
+Inner frame ContentZone: width=1150, height=1150, x=145, y=145
 
 4:5 VERTICAL
-Frame: 1440 x 1800
-Content zone: 1150 x 1430
-Content starts at: x=145, y=185
-Content ends at: x=1295, y=1615
-EVERY element must be: x >= 145, y >= 185, right edge <= 1295, bottom <= 1615
+Outer frame: 1440 x 1800
+Inner frame ContentZone: width=1150, height=1430, x=145, y=185
 
 9:16 REELS/STORY
-Frame: 1080 x 1920
-Content zone: 1000 x 1220
-Content starts at: x=40, y=250
-Content ends at: x=1040, y=1470
-EVERY element must be: x >= 40, y >= 250, right edge <= 1040, bottom <= 1470
-Top 250px has username UI - NOTHING here
-Bottom 450px has CTA UI - NOTHING here
+Outer frame: 1080 x 1920
+Inner frame ContentZone: width=1000, height=1220, x=40, y=250
+WARNING: Top 250px has platform UI. Bottom 450px has CTA UI.
 
 1.91:1 HORIZONTAL
-Frame: 2064 x 1080
-Content zone: 1664 x 860
-Content starts at: x=200, y=110
-Content ends at: x=1864, y=970
-EVERY element must be: x >= 200, y >= 110, right edge <= 1864, bottom <= 970
+Outer frame: 2064 x 1080
+Inner frame ContentZone: width=1664, height=860, x=200, y=110
 
-### GOOGLE PMAX:
+GOOGLE PMAX:
+Landscape: Outer 1200x628, Inner width=1080 height=548 x=60 y=40
+Square: Outer 1200x1200, Inner width=1080 height=1080 x=60 y=60
+Portrait: Outer 960x1200, Inner width=860 height=1080 x=50 y=60
 
-Landscape: Frame 1200x628
-Content: 1080x548 at x=60, y=40. Ends at x=1140, y=588
+### VERIFICATION AFTER BUILDING:
 
-Square: Frame 1200x1200
-Content: 1080x1080 at x=60, y=60. Ends at x=1140, y=1140
+Select the ContentZone frame and confirm:
+- 1:1: Is it 1150x1150? Is it at x=145, y=145? If not, FIX IT.
+- 4:5: Is it 1150x1430? Is it at x=145, y=185? If not, FIX IT.
+- 9:16: Is it 1000x1220? Is it at x=40, y=250? If not, FIX IT.
+- 1.91:1: Is it 1664x860? Is it at x=200, y=110? If not, FIX IT.
 
-Portrait: Frame 960x1200
-Content: 860x1080 at x=50, y=60. Ends at x=910, y=1140
-
-### HOW TO BUILD EACH AD IN FIGMA:
-
-Step 1: Create frame at exact format dimensions (e.g. 1440x1440)
-Step 2: Add background image, set it to FILL the entire frame
-Step 3: Add dark overlay if needed (rectangle, fill black, opacity 40-60%)
-Step 4: Place logo as individual element with position x and y INSIDE content zone
-Step 5: Place heading text as individual element with position INSIDE content zone
-Step 6: Place body text as individual element with position INSIDE content zone
-Step 7: Place CTA as individual element with position INSIDE content zone
-
-DO NOT group elements into an auto-layout frame.
-DO NOT create a container frame for the content.
-Each element is a direct child of the main ad frame, positioned absolutely.
-
-### ELEMENT POSITION EXAMPLES FOR 1:1 (1440x1440):
-
-Logo: x=145, y=160 (top-left of content zone, slight offset)
-Heading: x=145, y=550, width=1000 (left-aligned in content zone)
-Body: x=145, y=750, width=900
-CTA: x=145, y=1100 (near bottom of content zone, but above y=1295)
-
-These are EXAMPLES. Adjust based on layout. But notice:
-- Nothing has x less than 145
-- Nothing has y less than 145
-- Nothing extends past x=1295 or y=1295
-- There is SPACE between elements and the content zone edges
-
-### VERIFICATION:
-After placing every element, CHECK each one:
-1. Select the element in Figma
-2. Look at its X, Y, Width, Height
-3. Confirm: X >= content zone start X
-4. Confirm: Y >= content zone start Y
-5. Confirm: X + Width <= content zone end X
-6. Confirm: Y + Height <= content zone end Y
-If ANY element fails, reposition it.
+DO NOT USE 1280x1280. That is WRONG.
+DO NOT USE x=80 y=80. That is WRONG.
+The content zone is NOT 1280. It is 1150 for 1:1.
+The position is NOT 80. It is 145 for 1:1.
 
 ---
 
@@ -180,7 +163,7 @@ Examples:
 - AcmeCoffee-01.15-9:16-2
 
 Rules:
-- NO spaces
+- NO spaces anywhere
 - CamelCase for multi-word brands
 - Date: MM.DD with leading zeros
 - Variation: 1, 2, 3 (no leading zeros)
@@ -211,7 +194,7 @@ Font weights:
 - Headlines: ALWAYS Bold or Semibold
 - CTA: Bold or Semibold
 - Body: Regular or Medium
-- NEVER use Light or Thin weights in ads
+- NEVER Light or Thin in ads
 
 ---
 
@@ -228,7 +211,7 @@ C. Multiple people: ALL faces protected. Use overlay strip if needed.
 
 D. Never cover hands holding product or product features.
 
-E. Text near subjects needs overlay (black 40-60% opacity) or
+E. Text near subjects needs overlay (black 40-60%) or
    text shadow (2px blur, 60% opacity).
 
 ---
@@ -248,17 +231,18 @@ E. Text near subjects needs overlay (black 40-60% opacity) or
 
 Every layer named. NO auto-generated names.
 
-Layer order (top to bottom):
-  CTA
-  BodyCopy
-  Heading
-  Logo
-  DarkOverlay (if used)
-  Image
-  Background
+Layer structure:
+  OuterFrame (BrandName-MM.DD-Format-Variation)
+    ContentZone (inner frame)
+      CTA
+      BodyCopy
+      Heading
+      Logo
+    DarkOverlay (if used)
+    Image
+    Background
 
 Multiples: Heading-Primary, Heading-Sub
-Groups: CTAGroup, PriceGroup
 NEVER leave: Frame, Rectangle, Ellipse, Group, Vector
 
 ---
@@ -276,45 +260,45 @@ NEVER add to first page by default.
 
 1. Read brand file in Figma (if provided)
 2. Ask ALL 6 question sections - WAIT for every answer
-3. Create frame at exact dimensions
-4. Add background image (fills entire frame)
-5. Add dark overlay if needed for text readability
-6. Analyze image for faces/people (Rule 4)
-7. Place each element individually with absolute positioning
-   ALL positions within the content zone (Rule 1)
-8. Use specified fonts (Rule 3 for sizes)
-9. Name frame (Rule 2) and all layers (Rule 6)
-10. VERIFY every element position against content zone bounds
-11. Show designer for feedback
+3. For each format:
+   a. Create outer frame at format dimensions
+   b. Add background image (fills entire frame)
+   c. Add dark overlay if needed
+   d. Create ContentZone inner frame at EXACT specs from Rule 1
+   e. Verify ContentZone dimensions and position
+   f. Place elements inside ContentZone
+   g. Analyze image for faces (Rule 4)
+   h. Apply text sizes (Rule 3) and fonts from brief
+   i. Name frame (Rule 2) and layers (Rule 6)
+4. Final verification: select ContentZone, confirm size and position
+5. Show designer
 
 ---
 
 ## REVIEW CHECKLIST
 
-Margins:
-- Every element x >= content zone start x
-- Every element y >= content zone start y
-- Every element right edge <= content zone end x
-- Every element bottom edge <= content zone end y
-- No auto-layout wrapper frame around content
-- Elements are direct children of the ad frame
+Content Zone:
+- ContentZone frame exists inside each ad
+- 1:1: ContentZone is 1150x1150 at x=145, y=145 (NOT 1280, NOT x=80)
+- 4:5: ContentZone is 1150x1430 at x=145, y=185
+- 9:16: ContentZone is 1000x1220 at x=40, y=250
+- 1.91:1: ContentZone is 1664x860 at x=200, y=110
+- All elements are children of ContentZone
 
 Naming:
 - BrandName-MM.DD-Format-Variation (no spaces)
-- All layers named per taxonomy
+- All layers named
 
 Typography:
-- Fonts match designer specification
+- Fonts match designer spec
 - Headlines min 72px (1440) / 56px (1080) / 80px (2064)
 - Bold/Semibold for headlines and CTA
 
 Image:
 - No text over faces
-- No text over eyes or hands with product
 - Proper overlay for contrast
 
 Design:
 - CTA 4.5:1+ contrast
 - Under 20% text for Meta
 - 2-3 colors max
-- Clear hierarchy
