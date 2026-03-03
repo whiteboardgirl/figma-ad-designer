@@ -1,12 +1,12 @@
 {
-  "name": "figma-ad-designer",
+  "name": "figma-ad-designer-marketplace",
   "owner": {
     "name": "Conceptual HQ"
   },
   "plugins": [
     {
       "name": "figma-ad-designer",
-      "source": ".",
+      "source": "./plugin",
       "description": "AI ad design assistant for Meta and Google Ads in Figma"
     }
   ]
