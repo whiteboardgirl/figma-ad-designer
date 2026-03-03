@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .ad-container {
+    position: relative;
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+  }
+  .bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 10%;
+  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(15, 25, 50, 0.1) 0%,
+      rgba(15, 25, 50, 0.15) 30%,
+      rgba(15, 25, 50, 0.55) 50%,
+      rgba(15, 25, 50, 0.9) 65%,
+      rgba(15, 25, 50, 0.97) 80%,
+      rgba(15, 25, 50, 0.97) 100%
+    );
+  }
+  /* Safe zone: top 250px and bottom 250px are UI overlay areas */
+  .content {
+    position: absolute;
+    /* Stay within safe zone: top 250px to bottom 250px */
+    top: 260px;
+    bottom: 260px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 65px;
+  }
+  .logo-row {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .logo {
+    height: 52px;
+    width: auto;
+  }
+  .text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 1.18;
+    color: #ffffff;
+    max-width: 920px;
+    letter-spacing: -0.3px;
+  }
+  .subheadline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 850px;
+  }
+  .cta-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 40px;
+    background: linear-gradient(135deg, #a8d7fc 0%, #ffffff 100%);
+    border: 1.5px solid #1f3662;
+    border-radius: 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: #1f3662;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+  }
+  .cta-icon {
+    width: 48px;
+    height: 48px;
+  }
+</style>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</head>
+<body>
+  <div class="ad-container">
+    <img class="bg-image" src="https://www.figma.com/api/mcp/asset/af4b9cb3-55f7-4b87-b369-569941621700" alt="">
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="logo-row">
+        <img class="logo" src="https://www.figma.com/api/mcp/asset/db8ffcdf-aa3a-4883-a3f9-bd35bc192079" alt="Marquis Who's Who">
+      </div>
+      <div class="text-block">
+        <h1 class="headline">In competitive environments, how your career is documented matters</h1>
+        <p class="subheadline">The way your achievements are recognized can influence what comes next</p>
+        <div class="cta-row">
+          <a class="cta-button" href="#">
+            See if you qualify
+            <img class="cta-icon" src="https://www.figma.com/api/mcp/asset/a7759450-9298-4acc-9068-fcbace92d8fe" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
