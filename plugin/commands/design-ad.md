@@ -1,6 +1,6 @@
 ---
-description: Create ad designs in Figma for Meta or Google campaigns. Specify the platform and brief.
-argument-hint: "[meta|google|both] [brief description]"
+description: Create ad designs in Figma for Meta or Google campaigns.
+argument-hint: "[meta|google|both] [brief]"
 allowed-tools:
   - Read
   - Write
@@ -10,57 +10,66 @@ allowed-tools:
 
 # /design-ad
 
-## Instructions
+## MANDATORY STEPS - FOLLOW IN EXACT ORDER
 
-You are starting an ad design production session. Follow these steps:
+### STEP 1: READ THE SKILL
+Read skills/ad-design-guru/SKILL.md completely before doing anything.
 
-### 1. Parse the Request
-Identify from the user's input:
-- **Platform**: Meta, Google (PMax), or both
-- **Formats needed**: Which sizes/ratios
-- **Campaign brief**: What's the ad about, what's the goal
-- **Brand reference**: Is there an existing Figma brand file?
+### STEP 2: ASK ALL QUESTIONS
+You MUST ask these questions and WAIT for answers before creating anything:
 
-### 2. If Information is Missing, Ask
-Be specific about what you need:
-- "Which Meta formats? 1:1, 4:5, 9:16, 1.91:1, or all four?"
-- "Is there a Figma brand file I should reference? Share the link."
-- "What's the main headline and CTA text?"
+1. Brand name?
+2. Figma brand file link?
+3. Campaign name?
+4. Which Figma page to use? (list pages first, ask which one)
+5. Which formats? (1:1, 4:5, 9:16, 1.91:1, PMax, all)
+6. Heading font and weight? Body font? CTA font?
+   (Suggest pairings if unsure)
+7. Brand colors? (hex codes) CTA button color?
+8. Headline text?
+9. CTA text?
+10. Body copy?
+11. Image to use?
 
-### 3. Read the Skills
-- Read `skills/ad-design-guru/SKILL.md` for design rules and workflow
-- If setting up brand assets: read `skills/brand-setup/SKILL.md`
-- For Meta specifics: read `skills/ad-design-guru/references/meta-ads-rules.md`
-- For Google specifics: read `skills/ad-design-guru/references/google-ads-rules.md`
+DO NOT CREATE ANY FRAMES UNTIL ALL QUESTIONS ARE ANSWERED.
 
-### 4. Execute in Figma
-Using figma-remote-mcp:
-- Create frames at exact Conceptual HQ standard dimensions
-- Build the master design (start with 1:1 for Meta, landscape for Google)
-- Adapt to all requested formats
-- Follow safe zone rules strictly
-- Apply brand assets consistently
+### STEP 3: CREATE FRAME AND ZONES
+For each format, follow this EXACT sequence:
 
-### 5. Present and Iterate
-Show the designer what you've created and ask for feedback.
-Be ready to iterate — ad design is always collaborative.
+A. Create frame at exact dimensions (e.g. 1440x1440 for 1:1)
 
-## Quick Reference — Sizes
+B. Set the background image CLIPPED to the frame
+   - Image fills the entire frame edge to edge
+   
+C. Create the safe zone guide rectangle INSIDE the frame:
+   - Use the EXACT dimensions from the skill
+   - 1:1 example: width 1150, height 1150, x 145, y 145
+   - No fill, stroke #FF00FF 1px dashed 25% opacity
+   - Name: SafeZoneGuide
+   - Lock this layer
 
-**Meta:**
-- 1:1 = 1440×1440
-- 4:5 = 1440×1800
-- 9:16 = 1080×1920
-- 1.91:1 = 2064×1080
+D. Create the content area rectangle INSIDE the safe zone:
+   - 60px smaller on each side than safe zone
+   - 1:1 example: width 1030, height 1030, x 205, y 205
+   - No fill, stroke #00FF00 1px dashed 15% opacity
+   - Name: ContentArea
+   - Lock this layer
 
-**Google PMax:**
-- Landscape = 1200×628
-- Square = 1200×1200
-- Portrait = 960×1200
+E. Place ALL elements (logo, heading, body, CTA) INSIDE the content area
+   - Every element X must be >= content area X
+   - Every element Y must be >= content area Y
+   - Every element right edge must be <= content area X + width
+   - Every element bottom edge must be <= content area Y + height
 
-## Examples
-```
-/design-ad meta Summer sale for fashion brand — all 4 formats
-/design-ad google pmax assets for SaaS product launch
-/design-ad both Full campaign kit for restaurant grand opening
-```
+### STEP 4: NAME EVERYTHING
+- Frame: BrandName-MM.DD-Format-Variation (NO spaces, numeric date)
+  Example: Marquis-03.03-1:1-1
+- Layers: CTA, BodyCopy, Heading, Logo, TextOverlay, ContentArea, SafeZoneGuide, Image, Background
+
+### STEP 5: VERIFY
+Before showing the designer, check:
+- Are ALL elements inside the content area rectangle?
+- Is the naming correct (no spaces, MM.DD format)?
+- Are fonts the ones the designer specified?
+- Is headline at least 72px on 1440px frames?
+- Does any text cover a face in the image?
