@@ -8,7 +8,7 @@ description: >
   production task. Also triggers for brand file setup, ad review, or format
   adaptation. This skill should be used for ANY advertising design work
   happening in Figma through figma-remote-mcp.
-version: 1.4.0
+version: 1.5.0
 ---
 
 # Ad Design Guru - Conceptual HQ
@@ -21,38 +21,37 @@ ad creatives for Meta and Google Ads campaigns.
 
 ## CRITICAL: BEFORE YOU DESIGN ANYTHING
 
-You MUST ask the designer ALL of these questions BEFORE creating any
-frames or elements. Do NOT skip any question. Do NOT assume answers.
-Wait for the designer to respond to each section.
+You MUST ask the designer ALL questions BEFORE creating any frames.
+Do NOT skip any. WAIT for answers.
 
 ### Question 1: Brand
-- What is the brand name?
-- Is there a Figma brand file? (share the link)
+- Brand name?
+- Figma brand file link?
 
 ### Question 2: Campaign
-- What is the campaign name?
-- Which Figma page should I place the ads on? (list existing pages first)
+- Campaign name?
+- Which Figma page? (list pages first, ask which one)
 
-### Question 3: Formats needed
-- Which formats?
+### Question 3: Formats
+Which formats?
   a) 1:1 (1440x1440) Feed square
   b) 4:5 (1440x1800) Feed vertical
   c) 9:16 (1080x1920) Reels/Story
   d) 1.91:1 (2064x1080) Feed horizontal
   e) Google PMax assets
-  f) All of the above
+  f) All
 
 ### Question 4: Typography - MANDATORY
 "What fonts should I use?"
-- Heading font: (name and weight, e.g. Montserrat Bold)
-- Body/subhead font: (name and weight, e.g. Open Sans Regular)
-- CTA font: (name and weight, or same as heading)
+- Heading font and weight?
+- Body font and weight?
+- CTA font and weight?
 
-If the designer is unsure, suggest these pairings:
-- Modern/Clean: Montserrat Bold + Open Sans Regular
-- Elegant/Luxury: Playfair Display Bold + Lato Regular
-- Bold/Impact: Bebas Neue Regular + Roboto Regular
-- Tech/Startup: Inter Bold + Inter Regular
+Suggestions if unsure:
+- Modern: Montserrat Bold + Open Sans Regular
+- Luxury: Playfair Display Bold + Lato Regular
+- Impact: Bebas Neue + Roboto Regular
+- Tech: Inter Bold + Inter Regular
 - Friendly: Nunito Bold + Source Sans Pro Regular
 - Editorial: DM Serif Display + DM Sans Regular
 
@@ -61,222 +60,200 @@ DO NOT proceed without font confirmation.
 ### Question 5: Colors
 - Brand colors? (hex codes)
 - CTA button color?
-- Background preference? (dark/light/image)
+- Background: dark/light/image?
 
 ### Question 6: Content
-- Main headline text?
-- CTA text? (e.g. Shop Now, Learn More)
-- Any body/subhead copy?
-- Image(s) to use? (share in Figma or describe)
+- Headline text?
+- CTA text?
+- Body copy?
+- Image(s)?
 
-ONLY after receiving answers to ALL questions, begin designing.
+ONLY after ALL answers, begin designing.
 
 ---
 
-## Rule 1: SAFE ZONES AND CONTENT PADDING
+## Rule 1: MARGINS AND CONTENT PLACEMENT
 
-There are TWO zones to understand:
+### THE PRINCIPLE:
+Each format has a CONTENT ZONE. This is the ONLY area where you place
+design elements. The background image fills the entire frame. Everything
+else (logo, heading, body, CTA) goes INSIDE the content zone.
 
-ZONE A: SAFE ZONE - the outer boundary (margin from frame edge)
-ZONE B: CONTENT AREA - where elements actually go (padded inside safe zone)
+### CRITICAL INSTRUCTIONS FOR FIGMA:
+- Do NOT create an auto-layout frame for content
+- Do NOT create a wrapper frame or group to hold elements
+- Place each element INDIVIDUALLY as a direct child of the main frame
+- Position each element using absolute X and Y coordinates
+- Every element must have its position within the content zone bounds
 
-Elements must NOT touch or sit at the edge of the safe zone.
-There must be PADDING between the safe zone edge and any element.
-
-### STEP BY STEP for each frame:
-
-Step 1: Create frame at exact format dimensions.
-
-Step 2: Create SAFE ZONE rectangle (Zone A):
-  - Exact size and position as specified below
-  - Fill: none
-  - Stroke: #FF00FF, 1px, dashed, opacity 25%
-  - Layer name: "SafeZoneGuide"
-  - Lock this layer
-
-Step 3: Create CONTENT AREA rectangle (Zone B):
-  - This is 60px SMALLER on each side than the safe zone
-  - Fill: none
-  - Stroke: #00FF00, 1px, dashed, opacity 15%
-  - Layer name: "ContentArea"
-  - Lock this layer
-
-Step 4: Place ALL elements (text, logo, CTA, etc.) inside the
-  CONTENT AREA (Zone B), NOT just inside the safe zone.
-  This ensures proper breathing room from the margins.
-
-### META AD FORMATS:
+### META FORMATS:
 
 1:1 SQUARE
-- Frame: 1440 x 1440
-- Safe zone (A): 1150 x 1150 at x:145 y:145
-- Content area (B): 1030 x 1030 at x:205 y:205
-- Content padding: 60px inside safe zone on all sides
+Frame: 1440 x 1440
+Content zone: 1150 x 1150
+Content starts at: x=145, y=145
+Content ends at: x=1295, y=1295
+EVERY element must be: x >= 145, y >= 145, right edge <= 1295, bottom <= 1295
 
 4:5 VERTICAL
-- Frame: 1440 x 1800
-- Safe zone (A): 1150 x 1430 at x:145 y:185
-- Content area (B): 1030 x 1310 at x:205 y:245
-- Content padding: 60px inside safe zone on all sides
+Frame: 1440 x 1800
+Content zone: 1150 x 1430
+Content starts at: x=145, y=185
+Content ends at: x=1295, y=1615
+EVERY element must be: x >= 145, y >= 185, right edge <= 1295, bottom <= 1615
 
 9:16 REELS/STORY
-- Frame: 1080 x 1920
-- Safe zone (A): 1000 x 1220 at x:40 y:250
-- Content area (B): 920 x 1100 at x:80 y:310
-- Content padding: 40px left/right, 60px top/bottom inside safe zone
-- Top 250px: UI overlay - NEVER place content
-- Bottom 450px: CTA UI overlay - NEVER place content
+Frame: 1080 x 1920
+Content zone: 1000 x 1220
+Content starts at: x=40, y=250
+Content ends at: x=1040, y=1470
+EVERY element must be: x >= 40, y >= 250, right edge <= 1040, bottom <= 1470
+Top 250px has username UI - NOTHING here
+Bottom 450px has CTA UI - NOTHING here
 
 1.91:1 HORIZONTAL
-- Frame: 2064 x 1080
-- Safe zone (A): 1664 x 860 at x:200 y:110
-- Content area (B): 1544 x 740 at x:260 y:170
-- Content padding: 60px inside safe zone on all sides
+Frame: 2064 x 1080
+Content zone: 1664 x 860
+Content starts at: x=200, y=110
+Content ends at: x=1864, y=970
+EVERY element must be: x >= 200, y >= 110, right edge <= 1864, bottom <= 970
 
-### GOOGLE PMAX FORMATS:
+### GOOGLE PMAX:
 
 Landscape: Frame 1200x628
-- Safe zone: 1080x548 at x:60 y:40
-- Content area: 960x448 at x:120 y:90
+Content: 1080x548 at x=60, y=40. Ends at x=1140, y=588
 
 Square: Frame 1200x1200
-- Safe zone: 1080x1080 at x:60 y:60
-- Content area: 960x960 at x:120 y:120
+Content: 1080x1080 at x=60, y=60. Ends at x=1140, y=1140
 
 Portrait: Frame 960x1200
-- Safe zone: 860x1080 at x:50 y:60
-- Content area: 760x960 at x:100 y:120
+Content: 860x1080 at x=50, y=60. Ends at x=910, y=1140
 
-### ELEMENT PLACEMENT RULES:
-- NO element should touch the safe zone boundary
-- Minimum 60px between any element and the safe zone edge
-- The CTA button should be centered horizontally in the content area
-- Logo should be positioned with at least its own height as clearance
-  from the content area edge
-- Headline text should start at least 60px from the content area top
-- Between elements, maintain at least 30px vertical spacing
+### HOW TO BUILD EACH AD IN FIGMA:
 
-### VERIFICATION BEFORE FINALIZING:
-For EVERY element, check:
-- Left edge >= Content Area x position?
-- Top edge >= Content Area y position?
-- Right edge <= Content Area x + Content Area width?
-- Bottom edge <= Content Area y + Content Area height?
-If ANY element is outside the content area, move it inward.
+Step 1: Create frame at exact format dimensions (e.g. 1440x1440)
+Step 2: Add background image, set it to FILL the entire frame
+Step 3: Add dark overlay if needed (rectangle, fill black, opacity 40-60%)
+Step 4: Place logo as individual element with position x and y INSIDE content zone
+Step 5: Place heading text as individual element with position INSIDE content zone
+Step 6: Place body text as individual element with position INSIDE content zone
+Step 7: Place CTA as individual element with position INSIDE content zone
+
+DO NOT group elements into an auto-layout frame.
+DO NOT create a container frame for the content.
+Each element is a direct child of the main ad frame, positioned absolutely.
+
+### ELEMENT POSITION EXAMPLES FOR 1:1 (1440x1440):
+
+Logo: x=145, y=160 (top-left of content zone, slight offset)
+Heading: x=145, y=550, width=1000 (left-aligned in content zone)
+Body: x=145, y=750, width=900
+CTA: x=145, y=1100 (near bottom of content zone, but above y=1295)
+
+These are EXAMPLES. Adjust based on layout. But notice:
+- Nothing has x less than 145
+- Nothing has y less than 145
+- Nothing extends past x=1295 or y=1295
+- There is SPACE between elements and the content zone edges
+
+### VERIFICATION:
+After placing every element, CHECK each one:
+1. Select the element in Figma
+2. Look at its X, Y, Width, Height
+3. Confirm: X >= content zone start X
+4. Confirm: Y >= content zone start Y
+5. Confirm: X + Width <= content zone end X
+6. Confirm: Y + Height <= content zone end Y
+If ANY element fails, reposition it.
 
 ---
 
 ## Rule 2: NAMING CONVENTION
 
-Frame naming (NO spaces, numeric date with dots):
+Frame name (NO spaces, numeric date):
 
 BrandName-MM.DD-Format-Variation
 
 Examples:
 - Marquis-03.03-1:1-1
-- Marquis-03.03-1:1-2
 - Marquis-03.03-4:5-1
-- Marquis-03.03-9:16-1
-- Marquis-03.03-1.91:1-1
-- AcmeCoffee-01.15-1:1-1
+- AcmeCoffee-01.15-9:16-2
 
 Rules:
-- NO spaces anywhere in the name
-- Brand as one word (CamelCase if multi-word)
+- NO spaces
+- CamelCase for multi-word brands
 - Date: MM.DD with leading zeros
-- Variation: 1, 2, 3 - no leading zeros
+- Variation: 1, 2, 3 (no leading zeros)
 
 ---
 
-## Rule 3: TEXT SIZE MINIMUMS
-
-These are MINIMUM sizes. Always go larger when possible.
-Ads are viewed on phones. Text must be bold and readable at a glance.
+## Rule 3: TEXT SIZES
 
 ON 1440px FRAMES (1:1, 4:5):
-- Main headline: minimum 72px, recommended 80-120px
+- Headline: minimum 72px, recommended 80-120px
 - Subheadline: minimum 36px, recommended 40-56px
-- Body copy: minimum 28px, recommended 32-40px
+- Body: minimum 28px, recommended 32-40px
 - CTA text: minimum 32px, recommended 36-48px
-- Fine print: minimum 20px
 
 ON 1080px FRAMES (9:16):
-- Main headline: minimum 56px, recommended 64-96px
+- Headline: minimum 56px, recommended 64-96px
 - Subheadline: minimum 28px, recommended 32-44px
-- Body copy: minimum 24px, recommended 28-36px
-- CTA text: minimum 28px, recommended 32-40px
+- Body: minimum 24px, recommended 28-36px
+- CTA: minimum 28px, recommended 32-40px
 
 ON 2064px FRAMES (1.91:1):
-- Main headline: minimum 80px, recommended 96-140px
+- Headline: minimum 80px, recommended 96-140px
 - Subheadline: minimum 40px, recommended 48-64px
-- Body copy: minimum 32px, recommended 36-48px
-- CTA text: minimum 36px, recommended 40-56px
+- Body: minimum 32px, recommended 36-48px
+- CTA: minimum 36px, recommended 40-56px
 
-GOOGLE PMAX (1200px):
-- Main headline: minimum 48px, recommended 56-80px
-- Body: minimum 24px
-- CTA: minimum 28px
-
-Font weight rules:
+Font weights:
 - Headlines: ALWAYS Bold or Semibold
-- Body: Regular or Medium
 - CTA: Bold or Semibold
-- NEVER use Light, Thin, or UltraLight in ads
+- Body: Regular or Medium
+- NEVER use Light or Thin weights in ads
 
 ---
 
 ## Rule 4: IMAGE UNDERSTANDING
 
-Analyze images BEFORE placing any text or elements.
+Analyze images BEFORE placing text.
 
-A. Front-facing person:
-   - NEVER text over face, head, hair, or eyes
-   - Buffer: 15% of face height around the face
-   - Place text on opposite side of frame
+A. Front-facing person: NEVER text over face, head, hair, eyes.
+   Place text on opposite side. Buffer 15% around face.
 
-B. Back-facing person:
-   - NEVER text on back of head
-   - Text can go below shoulders
+B. Back-facing person: NEVER text on back of head.
 
-C. Multiple people:
-   - ALL faces are protected zones
-   - Use strip overlay at top or bottom for text
+C. Multiple people: ALL faces protected. Use overlay strip if needed.
 
-D. General:
-   - Never cover hands holding product
-   - Never cover product features
-   - Place text in negative space
+D. Never cover hands holding product or product features.
 
-E. Contrast:
-   - Text near subjects needs semi-transparent overlay
-   - Black overlay 40-60% for light text
-   - Or text shadow 2px blur 60% opacity
+E. Text near subjects needs overlay (black 40-60% opacity) or
+   text shadow (2px blur, 60% opacity).
 
 ---
 
 ## Rule 5: LOGO SIZING
 
-- Logo width: 8-15% of frame width
-- On 1440px: logo 115-216px wide
-- On 1080px: logo 86-162px wide
-- On 2064px: logo 165-310px wide
-- Clear space: equal to logo mark height
+- Width: 8-15% of frame width
+- 1440px frames: 115-216px wide
+- 1080px frames: 86-162px wide
+- 2064px frames: 165-310px wide
+- Clear space: equal to logo height
 - Never upscale raster logos
 
 ---
 
 ## Rule 6: LAYER NAMING
 
-Every layer must be named. NO auto-generated names ever.
+Every layer named. NO auto-generated names.
 
 Layer order (top to bottom):
   CTA
   BodyCopy
   Heading
   Logo
-  TextOverlay (if used)
-  ContentArea (locked guide)
-  SafeZoneGuide (locked guide)
+  DarkOverlay (if used)
   Image
   Background
 
@@ -289,61 +266,55 @@ NEVER leave: Frame, Rectangle, Ellipse, Group, Vector
 ## Rule 7: PAGE PLACEMENT
 
 NEVER add to first page by default.
-1. List all pages first
+1. List all pages
 2. Ask designer which page
-3. Or create new: [CampaignName]-Ads
+3. Or create new: CampaignName-Ads
 
 ---
 
 ## WORKFLOW
 
-### Path A: Existing Brand File
-1. Read brand file in Figma
+1. Read brand file in Figma (if provided)
 2. Ask ALL 6 question sections - WAIT for every answer
-3. Create frames with safe zone AND content area guides (Rule 1)
-4. Analyze image for faces/people (Rule 4) BEFORE placing text
-5. Place all elements inside CONTENT AREA (not just safe zone)
-6. Verify minimum text sizes (Rule 3)
-7. Name frames (Rule 2) and layers (Rule 6)
-8. Verify all elements are inside content area
-9. Run review checklist
-
-### Path B: No Brand File
-1. Ask ALL 6 question sections
-2. Use brand-setup skill
-3. Follow Path A from step 3
+3. Create frame at exact dimensions
+4. Add background image (fills entire frame)
+5. Add dark overlay if needed for text readability
+6. Analyze image for faces/people (Rule 4)
+7. Place each element individually with absolute positioning
+   ALL positions within the content zone (Rule 1)
+8. Use specified fonts (Rule 3 for sizes)
+9. Name frame (Rule 2) and all layers (Rule 6)
+10. VERIFY every element position against content zone bounds
+11. Show designer for feedback
 
 ---
 
 ## REVIEW CHECKLIST
 
-Safe Zones and Padding:
-- SafeZoneGuide rectangle at correct size and position
-- ContentArea rectangle at correct size (60px inside safe zone)
-- ALL elements inside the content area (not touching safe zone edges)
-- Nothing in 9:16 top 250px or bottom 450px
-- Minimum 60px between any element and safe zone boundary
-- Minimum 30px spacing between elements
+Margins:
+- Every element x >= content zone start x
+- Every element y >= content zone start y
+- Every element right edge <= content zone end x
+- Every element bottom edge <= content zone end y
+- No auto-layout wrapper frame around content
+- Elements are direct children of the ad frame
 
 Naming:
-- BrandName-MM.DD-Format-Variation (no spaces, numeric date)
-- Sequential variations
+- BrandName-MM.DD-Format-Variation (no spaces)
 - All layers named per taxonomy
 
 Typography:
-- Fonts match what designer specified
-- Headlines minimum 72px (1440) / 56px (1080) / 80px (2064)
-- Bold or Semibold for headlines and CTA
-- No Light or Thin weights
+- Fonts match designer specification
+- Headlines min 72px (1440) / 56px (1080) / 80px (2064)
+- Bold/Semibold for headlines and CTA
 
 Image:
-- No text over faces (front or back)
-- No text over eyes
-- No elements covering products
-- Proper overlay if text near subject
+- No text over faces
+- No text over eyes or hands with product
+- Proper overlay for contrast
 
 Design:
 - CTA 4.5:1+ contrast
 - Under 20% text for Meta
 - 2-3 colors max
-- Clear hierarchy: headline > visual > CTA
+- Clear hierarchy
