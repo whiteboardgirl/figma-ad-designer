@@ -1,15 +1,11 @@
 {
   "name": "figma-ad-designer",
-  "description": "AI ad design assistant for Conceptual HQ. Creates production-ready Meta and Google Ads in Figma using figma-remote-mcp. Knows ad formats, safe zones, copy rules, brand compliance, and design best practices. Use when designing ads, creating ad variants, setting up brand files, or producing campaign creatives.",
+  "description": "AI ad design assistant for Conceptual HQ. Creates production-ready Meta and Google Ads in Figma using figma-remote-mcp. Knows ad formats, safe zones, copy rules, brand compliance, and design best practices.",
   "version": "1.0.0",
   "author": {
-    "name": "Conceptual HQ",
-    "url": "https://github.com/conceptualhq"
+    "name": "Conceptual HQ"
   },
-  "homepage": "https://github.com/conceptualhq/figma-ad-designer",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/conceptualhq/figma-ad-designer"
-  },
+  "homepage": "https://github.com/whiteboardgirl/figma-ad-designer",
+  "repository": "https://github.com/whiteboardgirl/figma-ad-designer",
   "license": "MIT"
 }
